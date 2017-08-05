@@ -46,8 +46,14 @@ def add_lists(lst1, lst2):
     elif len(lst2) == 0:
         return lst1
 
-    pairs = zip(lst1, lst2)
-    return [x + y for x, y in pairs]
+    result = []
+    #begin question 5
+
+    #your code goes here
+
+    #end question 5
+
+    return result
 
 
 def encode_message(message, code):

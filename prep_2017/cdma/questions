@@ -40,3 +40,10 @@ Example:
 >> [3, 8]
 
 Q5: util.py
+see function add_lists in line 43
+
+given two lists A and B of the same length, return a new 
+list C such that C[i] = A[i] + B[i]
+
+Note that if A or B is empty we return the none empty list 
+or an empty list if both are empty.
