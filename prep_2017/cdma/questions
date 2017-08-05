@@ -45,5 +45,16 @@ see function add_lists in line 43
 given two lists A and B of the same length, return a new 
 list C such that C[i] = A[i] + B[i]
 
-Note that if A or B is empty we return the none empty list 
+Note that if A or B is empty we return the non empty list 
 or an empty list if both are empty.
+
+
+Q6: util.py
+see function encode_msg in line 59. 
+
+To complete this question do the following. 
+
+1) upsample the message.
+2) extend the code.
+3) return the result of multiplying the upsampled_message and extended_code.
+

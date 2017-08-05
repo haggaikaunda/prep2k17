@@ -2,8 +2,9 @@
 #@author: Haggai Kaunda
 
 
-def upsample(message, n):
-    """Return a new list that has each element of MESSAGE repeated N times."""
+def upsample(message, code_length):
+    """Return a new list that has each element of MESSAGE repeated N (code_length) times."""
+
 
     result = []
 
@@ -16,8 +17,8 @@ def upsample(message, n):
 
 
 
-def extend_code(code, n):
-    """Return a new list that has the elements of CODE repeated N times, while
+def extend_code(code, message_length):
+    """Return a new list that has the elements of CODE repeated N (message_length) times, while
     preserving order."""
 
     result = []
@@ -57,12 +58,13 @@ def add_lists(lst1, lst2):
 
 
 def encode_message(message, code):
-    sampled_msg = upsample(message, len(code))
-    extended_code = extend_code(code, len(message))
+   encoded_message = []
+   #begin question 6
 
-    encoded_msg = multiply_lists(sampled_msg, extended_code)
+   #your code goes here
 
-    return encoded_msg
+   #end quetion 6
+   return encoded_message
 
 
 def decode_message(received_msg, code, code_length):
