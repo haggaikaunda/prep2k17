@@ -1,10 +1,16 @@
+#logic to run cdma from the commandline
+#@author: Haggai Kaunda.
+
 from util import *
 from scipy.linalg import hadamard
 
 version = "1.0"
 
+##### question 1 #####
 #your name goes here. 
-myName = "Athina"
+myName = ""
+
+##### End question 1 #####
 
 members = ["Haggai", "Athina", "Aliki", "Leticia", "Dimitris", "Eleni", "Iraklis"]
 codes = dict()
