@@ -1,1 +1,25 @@
-questions
+Q1: cdma.py
+see line 9.
+
+Q2: util.py
+see function upsamle in line 5. 
+
+For the purposes of this question, 'upsampling'
+will mean repeating every element of a list n
+times. 
+
+For example
+>> mylist = [1, 2, 3]
+>> upsample(mylist, 2)	  <- n is 2
+>> [1, 1, 2, 2, 3, 3]     <- you shoud see this.
+
+Q3: util.py
+see function extend_code in line 19. 
+
+In this question, we want to repeat a list n
+times. 
+
+For example:
+>> mylist = [1, 2, 3]
+>> extend_code(mylist, 2)
+>> [1, 2, 3, 1, 2, 3]

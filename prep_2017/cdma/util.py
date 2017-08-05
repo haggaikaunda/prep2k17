@@ -16,15 +16,16 @@ def upsample(message, n):
 
 
 
-def extend_code(code, msg_length):
+def extend_code(code, n):
     """Return a new list that has the elements of CODE repeated N times, while
     preserving order."""
 
-    n = msg_length
-
     result = []
-    for _ in range(n):
-        result = result + code
+    #begin question 3
+    
+    #your code goes here. 
+
+    #end question 4. 
     return result
 
 
