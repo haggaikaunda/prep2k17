@@ -1,6 +1,7 @@
 Q1: cdma.py
 see line 9.
 
+
 Q2: util.py
 see function upsamle in line 5. 
 
@@ -13,6 +14,7 @@ For example
 >> upsample(mylist, 2)	  <- n is 2
 >> [1, 1, 2, 2, 3, 3]     <- you shoud see this.
 
+
 Q3: util.py
 see function extend_code in line 19. 
 
@@ -23,3 +25,18 @@ For example:
 >> mylist = [1, 2, 3]
 >> extend_code(mylist, 2)
 >> [1, 2, 3, 1, 2, 3]
+
+
+Q4: util.py
+see function multiply_lists in line 32
+
+Given two lists A and B of the same length, return a new
+list C such that C[i] = A[i] * B[i]
+
+Example:
+>> A, B = [1, 2], [3, 4]
+>> C = multiply_lists(A, B)
+>> C
+>> [3, 8]
+
+Q5: util.py

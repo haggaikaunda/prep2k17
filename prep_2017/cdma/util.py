@@ -25,14 +25,20 @@ def extend_code(code, n):
     
     #your code goes here. 
 
-    #end question 4. 
+    #end question 3. 
     return result
 
 
 def multiply_lists(lst1, lst2):
     """multipy two lists and return the result."""
-    pairs = zip(lst1, lst2)
-    return [x * y for x, y in pairs]
+    result = []
+    #begin question 4
+
+    #your code goes here
+
+    #end questino 4
+
+    return result
 
 def add_lists(lst1, lst2):
     if len(lst1) == 0:
