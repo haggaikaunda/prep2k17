@@ -11,17 +11,19 @@ codes = dict()
 
 def main():
     
-    action = get_input("Note: enter quit to exit the cdma.\nWould you like to encrypt/decrypt a message? [e/d]").lower()
+    action = get_input("Note: enter quit to exit the cdma.\nWould you like to "
+     + "encrypt/decrypt a message? [e/d]").lower()
 
     if action == "quit":
-        print("Good bye, thanks for visiting. ")
+        print("\nGood bye, thanks for visiting.\n")
 
     elif action == "e":
         do_encrypt()
     elif action == "d":
         do_decrypt()
     else:
-        print(f"{action} is not a valid option.\nThe valid options are:\nquit => to exit cdma\ne => to encrypt a message\nd => to decrypt a message\n\nLets start over.")
+        print(f"{action} is not a valid option.\nThe valid options are:\nquit => to "
+            + "exit cdma\ne => to encrypt a message\nd => to decrypt a message\n\nLets start over.")
         main()
     return
 
@@ -35,31 +37,23 @@ def do_encrypt():
        nonlocal longest_msg
        longest_msg = n
         
-    num_msgs = int(get_input("How many messages would you like to send"))
+    num_msgs = int(get_input("\nHow many messages would you like to send"))
     
 
     counter = 1
     while counter <= num_msgs:
 
-        flag = True
+        name = get_name(f"\nMessage # {counter}.\nWho would you like to send"
+             + " this message to?")
 
-        while flag:
-            name = get_input(f"Message # {counter}.\nWho would you like to send this message to?")
+        msg = get_input("\nEnter the message you would like to send")
 
-            if not name in members:
-                print(f"I don't have {name} registered in my members list. Please enter one of the following names\n{members}\n")
-            else:
-                flag = False
+        messages[name] = msg
 
-
-            msg = get_input("\nEnter the message you would like to send")
-
-            messages[name] = msg
-
-            if len(msg) > longest_msg:
-                update_lngst_msg(len(msg))
-            
-            counter += 1
+        if len(msg) > longest_msg:
+            update_lngst_msg(len(msg))
+        
+        counter += 1
 
     print("Encrypting your messages. Hold on tight.\n")
 
@@ -77,39 +71,28 @@ def do_encrypt():
 
         #len of orignal message is used in decode_message function.
         encrypted_msg.append(longest_msg)
-
-        #diff will be used to know how many carracters to remove from a message during decryption.
-        #encrypted_msg.append(diff)
         
         aggregated_msgs = add_lists(encrypted_msg, aggregated_msgs)
 
-    with open('out.txt', 'w') as out:
+    with open('encoded.txt', 'w') as out:
         out.write(str(aggregated_msgs))
 
-    print("Your encrypted message has been written to out.txt\n")
-    print(f"But here it is for your viewing pleasure : \n{aggregated_msgs}\n")
+    print("Your encrypted message has been written to encoded.txt\n")
 
     main()
 
 
 def do_decrypt():
 
-    encrypted_msg, name = "", ""
+    encrypted_msg = ""
 
-    #get the name of the sender. Sender must be in members. 
-    flag = True
-    while flag:
-            sender = get_input(f"\nWho are you receiving your message from?")
-
-            if not sender in members:
-                print(f"I don't have {name} registered in my members list. Please enter one of the following names\n{members}\n")
-            else:
-                flag = False
+    #get the name of the sender. Sender must be in members.
+    name = get_name(f"\nWho are you receiving your message from?") 
 
     #ask where to find encrypted msg.
-    if get_input("\nIs the encrypted message in out.txt? [y/n]") == "y":
-        with open('out.txt', 'r') as input_file:
-            encrypted_msg = input_file.read()
+    if get_input("\nIs the encrypted message in encoded.txt? [y/n]") == "y":
+        with open('encoded.txt', 'r') as encoded_file:
+            encrypted_msg = encoded_file.read()
 
             #print(f"The encrypted msg is: \n{encrypted_msg}\n")
     else: 
@@ -117,31 +100,43 @@ def do_decrypt():
 
     encrypted_msg_list = encrypted_msgtolist(encrypted_msg) 
 
-    #get extra carracters to original message.
-    #extra = int(encrypted_msg_list.pop())
+    print(f"decoding message from {name}\n")
 
-
-
-    print(f"decoding message from {sender}\n")
-
-    decrypted_msg = decrypt(encrypted_msg_list, codes[sender])
+    #Change this to [name] to decrypt messages from anyone.
+    decrypted_msg = decrypt(encrypted_msg_list, codes[myName])
 
     
     original_msg = decrypted_msg.rstrip()
 
-    print(f"your decrypted message from {sender} says: {original_msg}\n")
+    with open('decoded.txt', 'w') as decoded_msg:
+        decoded_msg.write(str(original_msg))
+
+    print(f"your decrypted message from {name} has been written to decoded.txt.\n")
 
     main()
     return
 
 
+def get_name(screen_msg):
+    """get name."""
+    flag = True
+    while flag:
+            name = get_input(screen_msg)
 
+            if not name in members:
+                print(f"I don't have {name} registered in my members list."
+                    + " Please enter one of the following names\n{members}\n")
+            else:
+                flag = False
 
+    return name
 
 def get_input(screen_message):
+    """Present SCREEN_MESSAGE to the user and wait for input."""
     return input(f"{screen_message} : ")
 
 def initialize_cdma(n = len(members)):
+    """Initialize_cdma program and assign codes to each name in members."""
 
     from scipy.linalg import hadamard
 
@@ -150,33 +145,6 @@ def initialize_cdma(n = len(members)):
 
     for index, name in enumerate(members):
         codes[name] = code_list[index]
-
-
-
-
-
-
-
-class Person:
-    def __init__(self, name, code=None, message=None):
-        self.name = name
-        self.code = code
-        self.message = message
-
-    def get_code(self):
-        return self.code if self.code is not None else self.name + " has " \
-            "no code yet."
-
-    def get_message(self):
-        return self.message if self.message is not None else self.name \
-                + " has no message yet."
-
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
