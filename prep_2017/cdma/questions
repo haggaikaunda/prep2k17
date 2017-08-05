@@ -1,3 +1,5 @@
+NOTE: to run tests enter python cdmatests.py at the commandline. 
+
 Q1: cdma.py
 see line 9.
 
@@ -50,7 +52,7 @@ or an empty list if both are empty.
 
 
 Q6: util.py
-see function encode_msg in line 59. 
+see function encode_message in line 59. 
 
 To complete this question do the following. 
 
