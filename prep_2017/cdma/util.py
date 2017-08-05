@@ -1,10 +1,11 @@
-CODE_LENGTH, EXPANSION_FACTOR, SIG_LENGTH = 8, 1, 26
+#Utility functions used by cdma to encrypt and decrypt Messages.
+#@author: Haggai Kaunda
 
 
 def upsample(message, code_length):
     """Return a new list that has each element of MESSAGE repeated N times."""
 
-    n = code_length * EXPANSION_FACTOR
+    n = code_length
 
     result = []
     for elem in message:
@@ -17,7 +18,7 @@ def extend_code(code, msg_length):
     """Return a new list that has the elements of CODE repeated N times, while
     preserving order."""
 
-    n = msg_length * EXPANSION_FACTOR
+    n = msg_length
 
     result = []
     for _ in range(n):
@@ -56,7 +57,7 @@ def decode_message(received_msg, code, code_length):
 
     recovery_code = extend_code(code, msg_length)
 
-    code_len = code_length * EXPANSION_FACTOR
+    code_len = code_length
     demod = multiply_lists(received_msg, recovery_code)
     result, length = [], len(demod)
 
