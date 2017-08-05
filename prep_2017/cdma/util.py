@@ -2,16 +2,18 @@
 #@author: Haggai Kaunda
 
 
-def upsample(message, code_length):
+def upsample(message, n):
     """Return a new list that has each element of MESSAGE repeated N times."""
 
-    n = code_length
-
     result = []
-    for elem in message:
-        temp = [elem for _ in range(n)]
-        result += temp
+
+    #begin Question 2
+
+    #Your code goes here.
+
+    #end question 2
     return result
+
 
 
 def extend_code(code, msg_length):
